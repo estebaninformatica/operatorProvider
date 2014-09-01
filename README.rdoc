@@ -1,28 +1,12 @@
-== README
+Api Operator-Provider
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Api que se conecta con un bd interna en SQLSERVER.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+api_v1_operators_path	          GET	/api/v1/operators(.:format)	api/v1/operators#index
+api_v1_operator_path	          GET	/api/v1/operators/:id(.:format)	api/v1/operators#show
+api_v1_providers_path         	GET	/api/v1/providers(.:format)	api/v1/providers#index
+api_v1_provider_path	          GET	/api/v1/providers/:id(.:format)	api/v1/providers#show
+api_v1_operators_providers_path	GET	/api/v1/operators/providers(.:format)	api/v1/operators#index_with_providers
+api_v1_path	                    GET	/api/v1/operators/:id/providers(.:format)	api/v1/operators#show_with_providers
+
