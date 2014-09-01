@@ -19,7 +19,7 @@ class Operator < ActiveRecord::Base
   # def as_json(options)
   #    super(:only => :id_ope, :methods => [:nom_ope])
   # end
-  #alias_attribute(:name, :nom_ope)
-
+  alias_attribute(:name, :nom_ope)
+  alias_attribute(:id, :id_ope)
 
 end

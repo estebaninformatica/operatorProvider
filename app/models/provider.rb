@@ -11,10 +11,6 @@ class Provider < ActiveRecord::Base
     true
   end
 
-  def as_json(options)
-    super(:only => :id_ope, :methods => [:nom_pre])
-  end
-
   def nom_pre
     sanatized(self[:nom_pre])
   end

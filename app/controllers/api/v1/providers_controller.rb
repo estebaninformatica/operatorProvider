@@ -3,22 +3,20 @@
 module Api
   module V1
     class ProvidersController < ApplicationController
-
-      before_filter :set_agency, except: [:index]
       
     	def index
-    	  @providers = Provider.limit(params[:limit]).offset(params[:offset]).select(:id_prestador,:name)
+    	  @providers = Provider.limit(params[:limit]).offset(params[:offset]).select(:id,:name)
     	  render json: @providers, methods: :url
     	end
     	
       def show
+        @provider = Provider.find(params[:id])
         render json: @provider, methods: :url
       end
       
-      private
-
-      def set_provider
+      def show_with_operator
         @provider = Provider.find(params[:id])
+        render json: @provider.to_json({:include => :operator}), methods: :url
       end
 
 	  end

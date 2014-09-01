@@ -8,7 +8,6 @@ gem 'spring', :group => :development
 
 gem 'sqlite3'
 
-
 gem "tiny_tds"
 
 group :development do
