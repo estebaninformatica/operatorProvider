@@ -2,10 +2,15 @@
 # encoding: utf-8
 
 class Provider < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
   establish_connection :aptour
   self.table_name = 't_prestador'
   self.primary_key = :id_prestador
   belongs_to :operator, :foreign_key=>'id_ope', class_name: 'Operator'
+
+  def url
+    api_v1_provider_path(self)
+  end
 
   def readonly?
     true
