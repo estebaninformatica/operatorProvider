@@ -5,8 +5,8 @@ module Api
     class OperatorsController < ApplicationController
 
     	def index
-    	  @operators = Operator.limit(params[:limit]).offset(params[:offset])
-    	  render json: @operators, methods: :url
+    	  @operators = Operator.search(params[:name]).limit(params[:limit]).offset(params[:offset])
+    	  render json: @operators, methods: :url 
     	end
 
     	def index_with_providers
@@ -20,14 +20,10 @@ module Api
       end
 
     	def show
-    		@operator = Operator.find(params[:id])
-        render json: @operator, methods: :url
+    		@operator = Operator.includes(:providers).where(:id_ope => params[:id])
+        render json: @operator.to_json({:include => :providers}), methods: :url
       end
 
-      def show_with_providers
-    		@operator = Operator.includes(:providers).where(:id_ope => params[:id])
-    		render json: @operator.to_json({:include => :providers}), methods: :url
-      end
 
 		end
   end

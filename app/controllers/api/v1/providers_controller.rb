@@ -5,7 +5,7 @@ module Api
     class ProvidersController < ApplicationController
       
     	def index
-    	  @providers = Provider.limit(params[:limit]).offset(params[:offset]).select(:id,:name)
+    	  @providers = Provider.search(params[:name]).limit(params[:limit]).offset(params[:offset]).select(:id,:name)
     	  render json: @providers, methods: :url
     	end
     	

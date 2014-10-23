@@ -8,6 +8,8 @@ class Operator < ActiveRecord::Base
   self.primary_key = :id_ope
   has_many :providers, :foreign_key=>'id_ope', class_name: 'Provider'
   
+  scope :search, ->(term) { where('Operador.nom_ope LIKE ?', "%#{term}%").order("Operador.nom_ope") }
+
   def url
     api_v1_operator_path(self)
   end
