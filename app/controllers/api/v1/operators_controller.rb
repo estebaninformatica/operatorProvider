@@ -20,8 +20,8 @@ module Api
       end
 
     	def show
-    		@operator = Operator.includes(:providers).where(:id_ope => params[:id])
-        render json: @operator.to_json({:include => :providers}), methods: :url
+    		@operator = Operator.includes(:providers).where(:id_ope => params[:id]).first
+        render json: @operator.to_json(:include => :providers, methods: :url)
       end
 
 
