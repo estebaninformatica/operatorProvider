@@ -6,7 +6,7 @@ class Provider < ActiveRecord::Base
   establish_connection :aptour
   self.table_name = 't_prestador'
   self.primary_key = :id_prestador
-  belongs_to :operator, :foreign_key=>'id_ope', class_name: 'Operator'
+  belongs_to :operator, :foreign_key=>'id_ope_pre', class_name: 'Operator'
 
   scope :search, ->(term) { where('t_prestador.nom_pre LIKE ?', "%#{term}%").order("t_prestador.nom_pre") }
 
