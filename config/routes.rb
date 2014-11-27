@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       # OPERATOR
       #Machea primero operators/providers
+      resources :category_providers, only: [:index]
 
       get 'operators/name/:name' => 'operators#index'
       get 'operators/providers/names' => 'operators#index_with_providers_name'
@@ -16,7 +17,6 @@ Rails.application.routes.draw do
       get 'operators/limit/:limit/offset/:offset' => 'operators#index'
 
       resources :operators, only: [:index, :show]
-
 
 
 

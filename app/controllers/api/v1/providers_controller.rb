@@ -11,12 +11,12 @@ module Api
     	
       def show
         @provider = Provider.find(params[:id])
-        render json: @provider, methods: :url
+        render json: @provider.to_json({:include => :category_provider}), methods: :url
       end
       
       def show_with_operator
         @provider = Provider.find(params[:id])
-        render json: @provider.to_json({:include => :operator}), methods: :url
+        render json: @provider.to_json({:include => [:operator,:category_provider]}), methods: :url
       end
 
 	  end
