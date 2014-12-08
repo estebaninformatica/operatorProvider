@@ -16,12 +16,12 @@ module Api
 
       def index_with_providers_name
         @operators = Operator.limit(params[:limit]).offset(params[:offset]).includes(:providers).select(:id,:name)
-        render json: @operators.to_json({:include => {:providers => {:only => [:id_prestador,:nom_pre]} }}), methods: :url
+        render json: @operators.to_json({:include => [{:providers => {:only => [:id_prestador,:nom_pre,:category_operator]} },]}), methods: :url
       end
 
     	def show
     		@operator = Operator.includes(:providers).where(:id_ope => params[:id]).first
-        render json: @operator.to_json(:include => :providers, methods: :url)
+        render json: @operator.to_json(:include => [:providers,:category_operator,:iva_service], methods: :url)
       end
 
 

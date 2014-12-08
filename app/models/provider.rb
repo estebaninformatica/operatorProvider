@@ -8,7 +8,6 @@ class Provider < ActiveRecord::Base
   self.primary_key = :id_prestador
   belongs_to :operator, :foreign_key=>'id_ope_pre', class_name: 'Operator'
   belongs_to :category_provider, :foreign_key=>'id_tipo', class_name: 'CategoryProvider'
-
   scope :search, ->(term) { where('t_prestador.nom_pre LIKE ?', "%#{term}%").order("t_prestador.nom_pre") }
 
 
