@@ -5,7 +5,7 @@ module Api
     class OperatorsController < ApplicationController
 
     	def index
-    	  @operators = Operator.search(params[:name]).limit(params[:limit]).offset(params[:offset])
+    	  @operators = Operator.search(params[:name].gsub("+", ' ')).limit(params[:limit]).offset(params[:offset])
     	  render json: @operators, methods: :url 
     	end
 
