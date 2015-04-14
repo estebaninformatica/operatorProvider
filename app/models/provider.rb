@@ -8,6 +8,8 @@ class Provider < ActiveRecord::Base
   self.primary_key = :id_prestador
   belongs_to :operator, :foreign_key=>'id_ope_pre', class_name: 'Operator'
   belongs_to :category_provider, :foreign_key=>'id_tipo', class_name: 'CategoryProvider'
+  belongs_to :city, :foreign_key=>'id_ciudad', class_name: 'City'
+
   scope :search, ->(term) { where('t_prestador.nom_pre LIKE ?', "%#{term}%").order("t_prestador.nom_pre") }
 
 
@@ -21,6 +23,10 @@ class Provider < ActiveRecord::Base
 
   def nom_pre
     sanatized(self[:nom_pre])
+  end
+
+  def city_name
+    city.name
   end
 
   alias_attribute(:name, :nom_pre)
