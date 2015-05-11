@@ -6,7 +6,8 @@ class Provider < ActiveRecord::Base
   establish_connection :aptour
   self.table_name = 't_prestador'
   self.primary_key = :id_prestador
-  belongs_to :operator, :foreign_key=>'id_ope_pre', class_name: 'Operator'
+  #belongs_to :operator, :foreign_key=>'id_ope_pre', class_name: 'Operator'
+  has_many  :operators,  :foreign_key=>'id_pro'
   belongs_to :category_provider, :foreign_key=>'id_tipo', class_name: 'CategoryProvider'
   belongs_to :city, :foreign_key=>'id_ciudad', class_name: 'City'
 

@@ -6,8 +6,13 @@ class Operator < ActiveRecord::Base
   establish_connection :aptour
   self.table_name = 'Operador'
   self.primary_key = :id_ope
-  
-  has_many   :providers,         :foreign_key=>'id_ope_pre', class_name: 'Provider'
+
+  #has_many   :providers,         :foreign_key=>'id_ope_pre', class_name: 'Provider'
+  #has_many  :operators_providers , :through => :operators_providers,    class_name: 'OperatorsProviders'
+ # has_many  :providers , :through => :operators_providers,    class_name: 'OperatorsProviders'
+   has_many  :providers,  :foreign_key=>'id_ope'
+  #has_many
+
   belongs_to :category_operator, :foreign_key=>'id_cat2',    class_name: 'CategoryOperator'
   belongs_to :iva_service,       :foreign_key=>'tip_item',   class_name: 'IvaService'
 
