@@ -8,13 +8,15 @@ gem 'spring', :group => :development
 
 gem 'sqlite3'
 
-gem "tiny_tds"
+gem "tiny_tds" 
+#gem "tiny_tds" ,:git=>"https://github.com/rails-sqlserver/tiny_tds"
 
 group :development do
    # some other gem
    gem "colorize"
    gem 'awesome_print'
    gem 'pry'
+   gem 'byebug'
 end
 gem 'activerecord-sqlserver-adapter'
 # To use ActiveModel has_secure_password

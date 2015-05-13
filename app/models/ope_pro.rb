@@ -7,6 +7,6 @@ class OpePro < ActiveRecord::Base
   self.table_name = 'prestador_x_operador'
 
   belongs_to :operator,  :foreign_key=>'id_ope', class_name: 'Operator'
-  belongs_to :providers, :foreign_key=>'id_pre', class_name: 'Provider'
+  belongs_to :provider, :foreign_key=>'id_pre', class_name: 'Provider'
 
 end
